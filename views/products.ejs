@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<body>
+    <a href="/transactions">Transactions</a> ||
+    <a href="/logout">Log out</a>
+    <h1>List Products</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Stock</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+        <% for (let i = 0; i < data.length; i++) {%>
+            <tr>
+                <td><%= data[i].name %></td>
+                <td><%= data[i].stock %></td>
+                <td><%= data[i].formatRupiah(data[i].price) %></td>
+                <td><a href="/products/buy/<%= data[i].id %>">Buy Product</a> ||
+                    <a href="/products/delete/<%= data[i].id %>">Delete</a>
+                </td>
+            </tr>
+        <%}%>
+    </table>
+</body>
+</html>

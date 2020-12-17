@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions</title>
+</head>
+<body>
+    <a href="/products">Products</a>
+    <h1>List of Transactions</h1>
+    <% if (!data) { %>
+        <p>You haven't bought any item.</p>
+    <% } else { %>
+        <table border="1">
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+            </tr>
+        <% for (let i = 0; i < data.length; i++) { %>
+            <tr>
+                <td><%= i + 1%></td>
+                <td><%= data[i].Product.name%></td>
+                <td><%= data[i].quantity %></td>
+                <td><%= data[i].formatRupiah(data[i].total_price) %></td>
+            </tr>
+        <%}%>
+    <% } %>
+        </table>
+</body>
+</html>

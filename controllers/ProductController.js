@@ -50,24 +50,12 @@ class ProductController {
             })
     }
 
-    static deleteProduct(req, res) {
-        let id = +req.params.product_id
-        Product.destroy({ 
-            where: { id }
-        })
-            .then(data =>{
-                res.redirect('/products')
-            })
-            .catch(err => {
-                res.send(err)
-            })
-    }
-
     static transaction(req, res) {
         let UserId = req.session.userId
         Transaction.findAll({
             where: { UserId },
-            include: [ Product ]
+            include: [ Product ],
+            order: [[ 'createdAt', 'ASC']]
         })
             .then(data => {
                 // console.log(data)
@@ -79,7 +67,16 @@ class ProductController {
             })
     } 
 
-
+    static deleteTransaction(req, res) {
+        let id = +req.params.id
+        Transaction.destroy({ where: { id }})
+            .then(result => {
+                res.redirect('/transactions')
+            })
+            .catch(err => {
+                res.sender(err)
+            })
+    }
     static logout(req, res) {
         req.session.destroy(err => {
             if(err) {

@@ -14,9 +14,9 @@ router.use(authentication)
 
 router.get('/products', ProductController.showProducts)
 router.get('/products/buy/:product_id', ProductController.buyProduct)
-router.get('/products/delete/:product_id', ProductController.deleteProduct)
 
 router.get('/transactions', ProductController.transaction)
+router.get('/transactions/delete/:id', ProductController.deleteTransaction)
 router.get('/logout', ProductController.logout)
 
 module.exports = router

@@ -21,8 +21,7 @@
                 <td><%= data[i].name %></td>
                 <td><%= data[i].stock %></td>
                 <td><%= data[i].formatRupiah(data[i].price) %></td>
-                <td><a href="/products/buy/<%= data[i].id %>">Buy Product</a> ||
-                    <a href="/products/delete/<%= data[i].id %>">Delete</a>
+                <td><a href="/products/buy/<%= data[i].id %>">Buy Product</a>
                 </td>
             </tr>
         <%}%>
